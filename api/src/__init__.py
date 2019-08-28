@@ -10,6 +10,9 @@ COCO_INSTANCE_CATEGORY_NAMES = [
     'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush'
 ]
 
+DATA_FOLDER = 'data'
+
 __all__ = [
-    'COCO_INSTANCE_CATEGORY_NAMES'
+    'COCO_INSTANCE_CATEGORY_NAMES',
+    'DATA_FOLDER'
 ]
