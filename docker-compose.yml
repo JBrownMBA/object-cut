@@ -1,0 +1,35 @@
+version: '3.5'
+services:
+
+  api_app:
+    image: object_cut_api_app
+    container_name: object_cut_api_app
+    build:
+      context: api
+      dockerfile: Dockerfile
+    networks:
+      - object_cut
+    ports:
+      - 9081:9081
+      - 3081:3081
+    restart: always
+    volumes:
+      - './api/data:/srv/object_cut/data'
+    depends_on:
+      - api_nginx
+  api_nginx:
+    image: object_cut_api_nginx
+    container_name: object_cut_api_nginx
+    build:
+      context: api
+      dockerfile: Dockerfile.nginx
+    networks:
+      - object_cut
+    ports:
+      - 8081:8081
+    restart: always
+
+networks:
+  object_cut:
+    name: object_cut
+    driver: bridge
