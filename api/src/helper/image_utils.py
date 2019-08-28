@@ -26,4 +26,4 @@ def decode(image_base64):
 def encode(output_image_path):
     with open(output_image_path, 'rb') as image_file:
         encoded_string = base64.b64encode(image_file.read())
-    return encoded_string
+    return str(encoded_string)
