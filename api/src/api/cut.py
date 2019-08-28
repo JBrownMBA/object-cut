@@ -3,7 +3,7 @@ from flask import request, jsonify
 from src import *
 from src.helper import image_utils
 from src.helper.response_maker import make_response
-from src.scripts.run import instance_segmentation_api
+from src.torch.run import instance_segmentation_api
 
 
 def post():
