@@ -1,4 +1,3 @@
-import torchvision
 import argparse
 import cv2
 import numpy as np
@@ -8,6 +7,9 @@ import torchvision.transforms as torch_transform
 from PIL import Image
 
 from src import *
+from src.object_cut import model
+
+args = None
 
 
 def _parse_args():
@@ -45,17 +47,17 @@ def _random_colour_masks(image):
     return coloured_mask
 
 
-def instance_segmentation_api(image_path, threshold=0.5, rect_th=3, text_size=3, text_th=3):
+def instance_segmentation_api(image_path, object_list, threshold=0.5, rect_th=3, text_size=3, text_th=3):
     masks, boxes, prediction_cls = _get_prediction(image_path, threshold)
     img = cv2.imread(image_path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     for i in range(len(masks)):
-        if prediction_cls[i] in args.list:
+        if prediction_cls[i] in object_list:
             rgb_mask = _random_colour_masks(masks[i])
             img = cv2.addWeighted(img, 1, rgb_mask, 1, 0)
-            if args.bounding_box:
+            if args and args.bounding_box:
                 cv2.rectangle(img, boxes[i][0], boxes[i][1], color=(0, 255, 0), thickness=rect_th)
-            if args.with_text:
+            if args and args.with_text:
                 cv2.putText(
                     img, prediction_cls[i], boxes[i][0], cv2.FONT_HERSHEY_SIMPLEX,
                     text_size, (0, 255, 0), thickness=text_th
@@ -65,13 +67,11 @@ def instance_segmentation_api(image_path, threshold=0.5, rect_th=3, text_size=3,
     plt.imshow(img)
     image_path_output = f'{".".join(image_path.split(".")[:-1])}_output.png'
     plt.savefig(image_path_output, bbox_inches='tight')
-    if args.show_result:
+    if args and args.show_result:
         plt.show()
     return image_path_output
 
 
 if __name__ == '__main__':
     args = _parse_args()
-    model = torchvision.models.detection.maskrcnn_resnet50_fpn(pretrained=True)
-    model.eval()
-    instance_segmentation_api(args.image_path)
+    instance_segmentation_api(args.image_path, args.list)
