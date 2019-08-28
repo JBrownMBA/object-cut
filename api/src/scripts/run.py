@@ -51,17 +51,20 @@ def instance_segmentation_api(image_path, object_list, threshold=0.5, rect_th=3,
     masks, boxes, prediction_cls = _get_prediction(image_path, threshold)
     img = cv2.imread(image_path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    for i in range(len(masks)):
-        if prediction_cls[i] in object_list:
-            rgb_mask = _random_colour_masks(masks[i])
-            img = cv2.addWeighted(img, 1, rgb_mask, 1, 0)
-            if args and args.bounding_box:
-                cv2.rectangle(img, boxes[i][0], boxes[i][1], color=(0, 255, 0), thickness=rect_th)
-            if args and args.with_text:
-                cv2.putText(
-                    img, prediction_cls[i], boxes[i][0], cv2.FONT_HERSHEY_SIMPLEX,
-                    text_size, (0, 255, 0), thickness=text_th
-                )
+    if masks.any():
+        rgb_mask_list = np.zeros(masks[0].shape)
+        for i in range(len(masks)):
+            if prediction_cls[i] in object_list:
+                rgb_mask_list += masks[i]
+                if args and args.bounding_box:
+                    cv2.rectangle(img, boxes[i][0], boxes[i][1], color=(0, 255, 0), thickness=rect_th)
+                if args and args.with_text:
+                    cv2.putText(
+                        img, prediction_cls[i], boxes[i][0], cv2.FONT_HERSHEY_SIMPLEX,
+                        text_size, (0, 255, 0), thickness=text_th
+                    )
+        rgb_mask = _random_colour_masks(rgb_mask_list)
+        img = cv2.addWeighted(img, 1, rgb_mask, 1, 0)
     plt.figure(figsize=(20, 30))
     plt.axis('off')
     plt.imshow(img)
