@@ -10,8 +10,8 @@ services:
     networks:
       - object_cut
     ports:
-      - 9081:9081
-      - 3081:3081
+      - 9083:9083
+      - 3083:3083
     restart: always
     volumes:
       - './api/data:/srv/object_cut/data'
@@ -26,7 +26,7 @@ services:
     networks:
       - object_cut
     ports:
-      - 8081:8081
+      - 8083:8083
     restart: always
 
 networks:
