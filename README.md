@@ -8,3 +8,13 @@
 
 
 ✂️ Cut an object of an image typing its name built in PyTorch Summer Hackathon
+
+## Architecture: Mask-RCNN
+
+This tool works using a **Mask-RCNN** model trained with the **COCO dataset**, an extension of Faster-RCNN which adds the masks of each class that has been detected. 
+
+<p align="center">
+<img src="https://cdn-images-1.medium.com/max/800/1*6MHxZVujW2W5khpQKCCDUw.png"
+  </p>
+  
+  The model has two main stages. Firstly, using a **Region Proposal Network** (RPN) it generates several region proposals where there might be an object. Then, secondly, it predicts the class of the object, refines the bounding box and generates the mask in pixel level based on the first stage proposal. 
