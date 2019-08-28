@@ -29,8 +29,8 @@ def encode(output_image_path):
     return str(encoded_string)
 
 
-def white(r, g, b):
-    if r > 250 and g > 250 and b > 250:
+def is_white(r, g, b):
+    if r == 255 and g == 255 and b == 255:
         return True
     else:
         return False
@@ -38,14 +38,15 @@ def white(r, g, b):
 
 def remove_white(image_path):
     img = Image.open(image_path)
-    img = img.convert("RGBA")
+    img = img.convert('RGBA')
     pix_data = img.getdata()
 
     new_data = []
     for item in pix_data:
-        if white(item[0], item[1], item[2]):
+        if is_white(item[0], item[1], item[2]):
             new_data.append((255, 255, 255, 0))
         else:
             new_data.append(item)
+
     img.putdata(new_data)
     img.save(image_path, "PNG", quality=95)
