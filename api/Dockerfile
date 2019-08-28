@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.7
 ADD . /srv/object_cut
 WORKDIR /srv/object_cut
 RUN pip install --upgrade pip
