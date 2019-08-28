@@ -9,13 +9,15 @@ COCO_INSTANCE_CATEGORY_NAMES = [
     'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'N/A', 'book', 'clock',
     'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush'
 ]
-
+IMAGE_DIMENSIONS_PIXELS = (512, 512)
+PIX_TO_INCH = 0.0104166667
 DATA_FOLDER = 'data'
-
 PRODUCTION_SERVER_IP = '134.209.244.212:8083'
 
 __all__ = [
     'COCO_INSTANCE_CATEGORY_NAMES',
+    'IMAGE_DIMENSIONS_PIXELS',
+    'PIX_TO_INCH',
     'DATA_FOLDER',
     'PRODUCTION_SERVER_IP'
 ]

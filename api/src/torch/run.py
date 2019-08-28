@@ -7,6 +7,7 @@ import torchvision.transforms as torch_transform
 from PIL import Image
 
 from src import *
+from src.helper import image_utils
 from src.object_cut import model
 
 args = None
@@ -18,12 +19,13 @@ def _parse_args():
     parser.add_argument('--list', help='Add a list of desired classes', nargs='+', type=str, required=True)
     parser.add_argument('--bounding_box', action='store_true')
     parser.add_argument('--with_text', action='store_true')
-    parser.add_argument('--show_result', action='store_true')
     return parser.parse_args()
 
 
 def _get_prediction(img_path, threshold):
     img = Image.open(img_path).convert('RGB')
+    img = image_utils.resize_aspect(img)
+    img.save(img_path, format='JPEG', quality=95)
     transform = torch_transform.Compose([torch_transform.ToTensor()])
     img = transform(img)
     prediction = model([img])
@@ -65,16 +67,15 @@ def instance_segmentation_api(image_path, object_list, threshold=0.5, rect_th=3,
                     )
         rgb_mask = _random_colour_masks(rgb_mask_list)
         img = cv2.addWeighted(img, 1, rgb_mask, 1, 0)
-    plt.figure(figsize=(20, 30))
+    image_path_output = f'{".".join(image_path.split(".")[:-1])}_output.png'
+    plt.figure(figsize=(img.shape[0] * PIX_TO_INCH, img.shape[1] * PIX_TO_INCH))
     plt.axis('off')
     plt.imshow(img)
-    image_path_output = f'{".".join(image_path.split(".")[:-1])}_output.png'
-    plt.savefig(image_path_output, bbox_inches='tight')
-    if args and args.show_result:
-        plt.show()
+    plt.savefig(image_path_output, bbox_inches='tight', dpi=175)
     return image_path_output
 
 
 if __name__ == '__main__':
     args = _parse_args()
-    instance_segmentation_api(args.image_path, args.list)
+    output_image_path = instance_segmentation_api(args.image_path, args.list)
+    image_utils.remove_white(output_image_path)
