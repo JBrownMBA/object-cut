@@ -31,7 +31,8 @@ def post():
             return jsonify(make_response(True, message='Wrong image specified.')), 400
 
         output_image_path = instance_segmentation_api(image_path, body['objects'])
-        encoded_string = image_utils.encode(output_image_path)
+        image_utils.remove_white(output_image_path)
+	encoded_string = image_utils.encode(output_image_path)
 
         return jsonify(make_response(False, image_base64=encoded_string)), 200
 

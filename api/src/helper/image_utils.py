@@ -1,7 +1,7 @@
 import uuid
 import base64
 import requests
-
+from PIL import Image
 from src import *
 
 
@@ -27,3 +27,25 @@ def encode(output_image_path):
     with open(output_image_path, 'rb') as image_file:
         encoded_string = base64.b64encode(image_file.read())
     return encoded_string
+
+
+def white(r, g, b):
+    if r > 250 and g > 250 and b > 250:
+        return True
+    else:
+        return False
+
+
+def remove_white(image_path):
+    img = Image.open(image_path)
+    img = img.convert("RGBA")
+    pix_data = img.getdata()
+
+    new_data = []
+    for item in pix_data:
+        if white(item[0], item[1], item[2]):
+            new_data.append((255, 255, 255, 0))
+        else:
+            new_data.append(item)
+    img.putdata(new_data)
+    img.save(image_path, "PNG", quality=95)
