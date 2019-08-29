@@ -20,8 +20,8 @@ def decode(image_base64):
     output_path = f'{DATA_FOLDER}/{uuid.uuid4()}.png'
     with open(output_path, 'wb') as f:
         f.write(image_data)
-    img = Image.open(output_path).convert('RGBA')
-    img.save(output_path, format='PNG', quality=95)
+    with Image.open(output_path).convert('RGBA') as img:
+        img.save(output_path, format='PNG', quality=95)
     return output_path
 
 
@@ -39,19 +39,18 @@ def is_white(r, g, b):
 
 
 def remove_white(image_path):
-    img = Image.open(image_path)
-    img = img.convert('RGBA')
-    pix_data = img.getdata()
+    with Image.open(image_path) as img:
+        img = img.convert('RGBA')
 
-    new_data = []
-    for item in pix_data:
-        if is_white(item[0], item[1], item[2]):
-            new_data.append((255, 255, 255, 0))
-        else:
-            new_data.append(item)
+        new_data = []
+        for item in img.getdata():
+            if is_white(item[0], item[1], item[2]):
+                new_data.append((255, 255, 255, 0))
+            else:
+                new_data.append(item)
 
-    img.putdata(new_data)
-    img.save(image_path, format='PNG', quality=95)
+        img.putdata(new_data)
+        img.save(image_path, format='PNG', quality=95)
 
 
 def get_resize_dimensions(original_size, dimensions):
