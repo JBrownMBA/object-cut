@@ -5,9 +5,16 @@
 [![GitHub forks](https://img.shields.io/github/forks/adriacabeza/Unnamed.svg)](https://GitHub.com/AlbertSuarez/object-cut/network/)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/AlbertSuarez/object-cut.svg)](https://github.com/AlbertSuarez/object-cut)
 
-
-
 ✂️ Cut an object of an image typing its name built in PyTorch Summer Hackathon
+
+## Results
+
+| Input                                  | Labels        | Output                                 |
+|----------------------------------------|---------------|----------------------------------------|
+| ![](docs/images/cat_input.png)         | "cat"         | ![](docs/images/cat_output.png)        |
+| ![](docs/images/dog_input.png)         | "dog"         | ![](docs/images/dog_output.png)        |
+| ![](docs/images/cat&person_output.png) | "cat, person" | ![](docs/images/cat&person_output.png) |
+| ![](docs/images/boat_input.png)        | "boat"        | ![](docs/images/boat_output.png)       |
 
 ## Architecture: Mask-RCNN
 
