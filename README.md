@@ -9,19 +9,17 @@
 
 ## Results
 
-| Input                                  | Labels        | Output                                 |
-|----------------------------------------|---------------|----------------------------------------|
-| ![](docs/images/cat_input.png)         | "cat"         | ![](docs/images/cat_output.png)        |
-| ![](docs/images/dog_input.png)         | "dog"         | ![](docs/images/dog_output.png)        |
-| ![](docs/images/cat&person_output.png) | "cat, person" | ![](docs/images/cat&person_output.png) |
-| ![](docs/images/boat_input.png)        | "boat"        | ![](docs/images/boat_output.png)       |
+![](docs/images/test_cat_combined.png)
+![](docs/images/test_cutlery_combined.png)
+![](docs/images/test_dog_combined.png)
+![](docs/images/test_pizza_combined.png)
 
 ## Architecture: Mask-RCNN
 
 This tool works using a **Mask-RCNN** model trained with the **COCO dataset**, an extension of Faster-RCNN which adds the masks of each class that has been detected. 
 
 <p align="center">
-<img src="https://cdn-images-1.medium.com/max/800/1*6MHxZVujW2W5khpQKCCDUw.png"
-  </p>
+  <img src="https://cdn-images-1.medium.com/max/800/1*6MHxZVujW2W5khpQKCCDUw.png"
+</p>
   
-  The model has two main stages. Firstly, using a **Region Proposal Network** (RPN) it generates several region proposals where there might be an object. Then, secondly, it predicts the class of the object, refines the bounding box and generates the mask in pixel level based on the first stage proposal. 
+The model has two main stages. Firstly, using a **Region Proposal Network** (RPN) it generates several region proposals where there might be an object. Then, secondly, it predicts the class of the object, refines the bounding box and generates the mask in pixel level based on the first stage proposal. 
