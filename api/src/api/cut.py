@@ -1,3 +1,5 @@
+import os
+
 from flask import request, jsonify
 
 from src import *
@@ -51,6 +53,12 @@ def post():
 
         with Timer('Encoding image'):
             encoded_string = image_utils.encode(output_image_path)
+
+        with Timer('Remove input and output images'):
+            if os.path.exists(image_path):
+                os.remove(image_path)
+            if os.path.exists(output_image_path):
+                os.remove(output_image_path)
 
         return jsonify(make_response(False, image_base64=encoded_string)), 200
 
