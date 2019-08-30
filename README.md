@@ -45,11 +45,11 @@ Our project, as it will be explained below, gets an image from a URL or itself a
 
 ### Inspiration
 
-TODO
+The inspiration came really from a moment where we needed to cut a person from a picture. We needed to make a simple extraction but we did not have the knowledge to do it or the tools (which most of them are not free like remove.bg, or what is more, not even available on Linux like Photoshop) so we decided to use Deep Learning to tackle this problem and allow to everybody do to extraction from a picture automatically.
 
 ### What it does
 
-TODO
+It takes a picture and a set of labels that are uploaded by the user, then we send that information to our API which then it runs a **Mask-RCNN** pytorch model to extract the masks of each class. Then using that information we are able to extract those pixels and return it without background. 
 
 ### How we built it
 
@@ -65,7 +65,7 @@ The model has two main stages. Firstly, using a **Region Proposal Network** (RPN
 
 ### Challenges we ran into
 
-TODO
+TODO BUA NI FLORES TIU
 
 ### Accomplishments that we're proud of
 
@@ -73,7 +73,6 @@ TODO
 
 ### What we learned
 
-TODO
 
 ### What's next for ObjectCut
 
