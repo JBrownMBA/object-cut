@@ -10,13 +10,10 @@ def _parse_args():
     parser.add_argument('--image_url', type=str)
     parser.add_argument('--image_path', type=str)
     parser.add_argument('--list', help='Add a list of desired classes', nargs='+', type=str, required=True)
+    parser.add_argument('--return_bounding_box', action='store_true')
+    parser.add_argument('--return_text', action='store_true')
+    parser.add_argument('--return_white_bg', action='store_true')
     return parser.parse_args()
-
-
-def _print_args():
-    print(f'[Image URL]: {args.image_url}')
-    print(f'[Image path]: {args.image_path}')
-    print(f'[Object list]: {args.list}')
 
 
 def test():
@@ -24,10 +21,16 @@ def test():
         print('image_url x(or) has to be specified.')
         return
 
+    request_body = dict(
+        objects=args.list,
+        return_bounding_box=args.return_bounding_box,
+        return_text=args.return_text,
+        return_white_bg=args.return_white_bg
+    )
     if args.image_url:
-        request_body = dict(objects=args.list, image_url=args.image_url)
+        request_body['image_url'] = args.image_url
     else:
-        request_body = dict(objects=args.list, image_base64=image_utils.encode(args.image_path))
+        request_body['image_base64'] = image_utils.encode(args.image_path)
     endpoint_url = f'http://{PRODUCTION_SERVER_IP}/cut'
     response = requests.post(endpoint_url, json=request_body, timeout=60)
     if response.ok:
@@ -35,10 +38,9 @@ def test():
         output_path = image_utils.decode(response_json['response']['image_base64'])
         print(output_path)
     else:
-        return response.content
+        print(response.content)
 
 
 if __name__ == '__main__':
     args = _parse_args()
-    _print_args()
     test()
