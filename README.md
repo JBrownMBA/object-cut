@@ -9,9 +9,10 @@
 
 ## Results
 
+![](docs/images/test_dog_combined.png)
 ![](docs/images/test_cat_combined.png)
 ![](docs/images/test_cutlery_combined.png)
-![](docs/images/test_dog_combined.png)
+![](docs/images/test_dog_frisbee_combined.png)
 ![](docs/images/test_pizza_combined.png)
 
 ## Architecture: Mask-RCNN
