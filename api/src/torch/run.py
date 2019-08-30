@@ -11,8 +11,6 @@ from src.helper import image_utils
 from src.helper.timer import Timer
 from src.object_cut import model
 
-args = None
-
 
 def _parse_args():
     parser = argparse.ArgumentParser()
@@ -20,6 +18,7 @@ def _parse_args():
     parser.add_argument('--list', help='Add a list of desired classes', nargs='+', type=str, required=True)
     parser.add_argument('--bounding_box', action='store_true')
     parser.add_argument('--with_text', action='store_true')
+    parser.add_argument('--remove_white', action='store_true')
     return parser.parse_args()
 
 
@@ -56,8 +55,8 @@ def _random_colour_masks(image):
     return coloured_mask
 
 
-def instance_segmentation_api(image_path, object_list, threshold=0.5, rect_th=3, text_size=3, text_th=3):
-    masks, boxes, prediction_cls = _get_prediction(image_path, threshold)
+def instance_segmentation_api(image_path, object_list, return_bounding_box, return_text):
+    masks, boxes, prediction_cls = _get_prediction(image_path, MODEL_THRESHOLD)
 
     with Timer('Apply mask'):
         img = cv2.imread(image_path)
@@ -67,12 +66,12 @@ def instance_segmentation_api(image_path, object_list, threshold=0.5, rect_th=3,
             for i in range(len(masks)):
                 if prediction_cls[i] in object_list:
                     rgb_mask_list += masks[i]
-                    if args and args.bounding_box:
-                        cv2.rectangle(img, boxes[i][0], boxes[i][1], color=(0, 255, 0), thickness=rect_th)
-                    if args and args.with_text:
+                    if return_bounding_box:
+                        cv2.rectangle(img, boxes[i][0], boxes[i][1], color=(0, 255, 0), thickness=MODEL_RECT_TH)
+                    if return_text:
                         cv2.putText(
                             img, prediction_cls[i], boxes[i][0], cv2.FONT_HERSHEY_SIMPLEX,
-                            text_size, (0, 255, 0), thickness=text_th
+                            MODEL_TEXT_SIZE, (0, 255, 0), thickness=MODEL_TEXT_TH
                         )
             rgb_mask = _random_colour_masks(rgb_mask_list)
             img = cv2.addWeighted(img, 1, rgb_mask, 1, 0)
@@ -90,5 +89,6 @@ def instance_segmentation_api(image_path, object_list, threshold=0.5, rect_th=3,
 
 if __name__ == '__main__':
     args = _parse_args()
-    output_image_path = instance_segmentation_api(args.image_path, args.list)
-    image_utils.remove_white(output_image_path)
+    output_image_path = instance_segmentation_api(args.image_path, args.list, args.bounding_box, args.with_text)
+    if args.remove_white:
+        image_utils.remove_white(output_image_path)

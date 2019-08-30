@@ -22,6 +22,13 @@ def post():
             if bool('image_url' in body) == bool('image_base64' in body):
                 return jsonify(make_response(True, message='image_url (x)or image_base64 has to be specified')), 400
 
+            if 'return_bounding_box' not in body:
+                body['return_bounding_box'] = False
+            if 'return_text' not in body:
+                body['return_text'] = False
+            if 'return_white_bg' not in body:
+                body['return_white_bg'] = False
+
         with Timer('Download image'):
             if 'image_url' in body:
                 image_path = image_utils.download(body['image_url'])
@@ -34,10 +41,13 @@ def post():
                 return jsonify(make_response(True, message='Wrong image specified.')), 400
 
         with Timer('Generate image'):
-            output_image_path = instance_segmentation_api(image_path, body['objects'])
+            output_image_path = instance_segmentation_api(
+                image_path, body['objects'], body['return_bounding_box'], body['return_text']
+            )
 
         with Timer('Removing white color'):
-            image_utils.remove_white(output_image_path)
+            if not body['return_white_bg']:
+                image_utils.remove_white(output_image_path)
 
         with Timer('Encoding image'):
             encoded_string = image_utils.encode(output_image_path)
