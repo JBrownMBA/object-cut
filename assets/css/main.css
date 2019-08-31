@@ -11,9 +11,22 @@ body, html {
 }
 
 .card {
-    width: 60% !important;
+    width: 80% !important;
 }
 
 .header {
     text-align: center;
+    font-size: 2em !important;
+}
+
+.button {
+    text-align: center !important;
+}
+
+@media screen and (min-width: 576px) { 
+
+    .card {
+        width: 60% !important;
+    }
+
 }
