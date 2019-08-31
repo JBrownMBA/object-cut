@@ -39,13 +39,11 @@
 
     <div class="">
       <div class="ui centered card">
-        <!-- Header -->
         <div class="content">
+          <!-- Header -->
           <h1 class="header">ObjectCut</h1>
-        </div>
-        <div class="content">
           <!-- Form -->
-          <form class="ui form">
+          <div class="ui form">
             <!-- Checkbox -->
             <div class="field">
                 <label for="image">Image origin</label>
@@ -67,17 +65,17 @@
             </div>
             <!-- Input Image URL -->
             <div id="input-url" class="field">
-              <input placeholder="Image URL" type="text">
+              <input placeholder="Image URL" type="text" name="imageUrl">
             </div>
             <!-- Input Image Base64 -->
             <div id="input-file" class="field">
               <label for="file" class="ui icon button"><i class="file icon"></i>Open File</label>
-              <input type="file" id="file" style="display:none">
+              <input type="file" id="file" style="display:none" accept=".jpg,.jpeg" name="imageBase64">
             </div>
             <!-- Input Objects -->
             <div class="required field">
               <label>Objects</label>
-              <select class="ui fluid search dropdown" multiple="">
+              <select class="ui fluid search dropdown" multiple="" name="objects">
                 <option value="">Object</option>
                 <option value="airplane">airplane</option>
                 <option value="apple">apple</option>
@@ -161,10 +159,14 @@
                 <option value="zebra">zebra</option>
                 </select>
             </div>
+            <!-- Parameters -->
+            <div class="field">
+                <label>Parameters</label>
+            </div>
             <!-- Input bounding box -->
             <div class="field">
               <div class="ui slider checkbox">
-                <input type="checkbox" name="bounding-box">
+                <input type="checkbox" name="boundingBox">
                 <label>Bounding box</label>
               </div>
             </div>
@@ -178,12 +180,12 @@
             <!-- Input white background -->
             <div class="field">
               <div class="ui slider checkbox">
-                <input type="checkbox" name="white-bg">
+                <input type="checkbox" name="whiteBg">
                 <label>White background</label>
               </div>
             </div>
-            <button class="ui submit button" type="submit">Submit</button>
-          </form>
+            <button class="ui button" type="submit">Submit</button>
+          </div>
         </div>
       </div>
     </div>
