@@ -3,6 +3,10 @@ $('#error-message').hide();
 $('#card-result').hide();
 $('.form #input-file').hide();
 
+// Animations
+$('#form-card').hide();
+setTimeout(function() {$('#form-card').transition('scale');}, 250);
+
 // Form retrieving
 function getFieldValueInput(fieldId) { 
     return $(".form input[name=" + fieldId + "]").val();
@@ -14,6 +18,15 @@ function getFieldValueCheckbox(fieldId) {
 
 function getFieldValueSelect(fieldId) { 
     return $(".form select[name=" + fieldId + "]").val();
+}
+
+// Message
+$('#error-message .close').on('click', function() {$('#error-message').transition('horizontal flip');})
+function showMessage(message) {
+    $('.error-messsage-text').html(message);
+    if ($('#error-message').is(":hidden")) {
+        $('#error-message').transition('horizontal flip');
+    }
 }
 
 // Dropdown
@@ -45,14 +58,12 @@ $('#file').on('change', function(input) {
             $('.form').removeClass('loading');
         };
         reader.onerror = function (e) {
-            $('.error-messsage-text').html('Wrong uploaded image.')
-            $('#error-message').show();
+            showMessage('Wrong uploaded image.');
             $('.form').removeClass('loading');
         }
         reader.readAsDataURL(input.target.files[0]);
     } else {
-        $('.error-messsage-text').html('Wrong uploaded image.')
-        $('#error-message').show();
+        showMessage('Wrong uploaded image.');
         $('.form').removeClass('loading');
     }
 });
@@ -67,13 +78,12 @@ function callApi(formData) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function(data) {
-            $('#form-card').hide();
+            $('#form-card').transition('scale');
             $('#card-result img').attr('src', 'data:image/png;base64,' + data.response.image_base64);
-            $('#card-result').show();
+            setTimeout(function() {$('#card-result').transition('slide down');}, 500);
         },
-        failure: function(errMsg) {
-            $('.error-messsage-text').html('Try again, please.')
-            $('#error-message').show();
+        error: function() {
+            showMessage('Try again, please.');
         },
         complete: function() {
             $('.form').removeClass('loading');
@@ -93,8 +103,7 @@ $('.form button').on('click', function() {
     if ($('#from-url').is(':checked')) {
         imageUrl = getFieldValueInput('imageUrl')
         if (!imageUrl) {
-            $('.error-messsage-text').html('No image URL specified.')
-            $('#error-message').show();
+            showMessage('No image URL specified.');
         } else {
             formData['image_url'] = imageUrl;
             callApi(formData);
@@ -102,14 +111,10 @@ $('.form button').on('click', function() {
     } else {
         imageBase64 = getFieldValueInput('imageBase64');
         if (!imageBase64) {
-            $('.error-messsage-text').html('No file uploaded.')
-            $('#error-message').show();
+            showMessage('No file uploaded.');
         } else {
             formData['image_base64'] = imageBase64;
             callApi(formData);
         }
     }
 });
-
-// Message
-$('#error-message .close').on('click', function() {$('#error-message').hide();})
