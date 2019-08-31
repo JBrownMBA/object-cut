@@ -1,5 +1,6 @@
 // Init
 $('#error-message').hide();
+$('#success-message').hide();
 $('#card-result').hide();
 $('.form #input-file').hide();
 
@@ -22,10 +23,25 @@ function getFieldValueSelect(fieldId) {
 
 // Message
 $('#error-message .close').on('click', function() {$('#error-message').transition('horizontal flip');})
-function showMessage(message) {
+$('#success-message .close').on('click', function() {$('#success-message').transition('horizontal flip');})
+
+function showErrorMessage(message) {
+    if ($('#success-message').is(":visible")) {
+        $('#success-message').transition('horizontal flip');
+    }
     $('.error-messsage-text').html(message);
     if ($('#error-message').is(":hidden")) {
         $('#error-message').transition('horizontal flip');
+    }
+}
+
+function showSuccessMessage(message) {
+    if ($('#error-message').is(":visible")) {
+        $('#error-message').transition('horizontal flip');
+    }
+    $('.success-messsage-text').html(message);
+    if ($('#success-message').is(":hidden")) {
+        $('#success-message').transition('horizontal flip');
     }
 }
 
@@ -56,14 +72,15 @@ $('#file').on('change', function(input) {
             resultSplit.shift();
             $(".form input[name=imageBase64]").val(resultSplit.join());
             $('.form').removeClass('loading');
+            showSuccessMessage('Your image was successfully loaded.')
         };
         reader.onerror = function (e) {
-            showMessage('Wrong uploaded image.');
+            showErrorMessage('Wrong uploaded image.');
             $('.form').removeClass('loading');
         }
         reader.readAsDataURL(input.target.files[0]);
     } else {
-        showMessage('Wrong uploaded image.');
+        showErrorMessage('Wrong uploaded image.');
         $('.form').removeClass('loading');
     }
 });
@@ -83,7 +100,7 @@ function callApi(formData) {
             setTimeout(function() {$('#card-result').transition('slide down');}, 500);
         },
         error: function() {
-            showMessage('Try again, please.');
+            showErrorMessage('Try again, please.');
         },
         complete: function() {
             $('.form').removeClass('loading');
@@ -103,7 +120,7 @@ $('.form button').on('click', function() {
     if ($('#from-url').is(':checked')) {
         imageUrl = getFieldValueInput('imageUrl')
         if (!imageUrl) {
-            showMessage('No image URL specified.');
+            showErrorMessage('No image URL specified.');
         } else {
             formData['image_url'] = imageUrl;
             callApi(formData);
@@ -111,7 +128,7 @@ $('.form button').on('click', function() {
     } else {
         imageBase64 = getFieldValueInput('imageBase64');
         if (!imageBase64) {
-            showMessage('No file uploaded.');
+            showErrorMessage('No file uploaded.');
         } else {
             formData['image_base64'] = imageBase64;
             callApi(formData);
