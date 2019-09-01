@@ -65,18 +65,19 @@ The model has two main stages. Firstly, using a **Region Proposal Network** (RPN
 
 ### Challenges we ran into
 
-TODO BUA NI FLORES TIU
+First of all, one member of the team had never worked with Pytorch, and the other one did very little (with the 0.4 version) so it was kind a challenge to get out our comfort zone. Then, our main goal was to make something actually useful so we needed to develop a complete project, not only an script or a tool available only for tech people; that created several challenges like adding the functionality of the script to a website, also the website had to be intuitive and well-designed and everything had to work smoothly.  
 
 ### Accomplishments that we're proud of
 
-TODO
+We are really proud with the final project we have developed. It is really useful and probably I will use it in the future.
 
 ### What we learned
 
+We have learnt how beautiful can be to insert Deep Learning to your solutions using Pytorch and all its facilities: torchvision, datasets, etc. Until we came up with an idea of the project we really dived into it and we were amazed by all the possibilities it opened. 
 
 ### What's next for ObjectCut
 
-TODO
+ObjectCut can only extract 91 classes **COMPROVAR** since it is the COCO pretrained model but it would be a nice improvement to train it with more classes. Also another feature that could be interesting to implement would be to add the option to load your saved Mask-RCNN model in the website UI. 
 
 ## API
 
