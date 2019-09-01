@@ -1,0 +1,40 @@
+body, html {
+    height: 100%;
+}
+
+.bg { 
+    background-image: url('../img/bg.jpg');
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#form-card {
+    width: 80%;
+}
+
+#card-result {
+    width: 80%;
+}
+
+.title {
+    text-align: center;
+    font-size: 2em !important;
+}
+
+.button {
+    text-align: center !important;
+}
+
+@media screen and (min-width: 576px) { 
+
+    #form-card {
+        width: 60%;
+    }
+
+    #card-result {
+        width: 40%;
+    }
+
+}

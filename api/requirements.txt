@@ -10,3 +10,4 @@ uWSGI
 uwsgitop
 requests
 tqdm
+pyOpenSSL
