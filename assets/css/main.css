@@ -39,6 +39,10 @@ body, html {
     width: 45vh;
 }
 
+.space-padding {
+    padding-top: 2vh;
+}
+
 .title {
     text-align: center;
     font-size: 2em !important;
