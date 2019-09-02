@@ -90,7 +90,7 @@ function callApi(formData) {
     $('.form').addClass('loading');
     $.ajax({
         type: 'POST',
-        url: 'https://134.209.244.212:8083/cut',
+        url: 'https://objectapi.ga/cut',
         data: JSON.stringify(formData),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',

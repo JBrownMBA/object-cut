@@ -6,7 +6,7 @@ info:
   title: ObjectCut API
 
 servers:
-  - url: https://134.209.244.212:8083
+  - url: https://objectapi.ga
     description: Production endpoint.
 
 tags:
