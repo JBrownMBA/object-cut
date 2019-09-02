@@ -118,8 +118,3 @@ dmypy.json
 # Data
 data/
 !data/.gitkeep
-
-# CA certificates
-ca-certificates/
-!ca-certificates/.gitkeep
-

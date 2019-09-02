@@ -1,8 +1,2 @@
 FROM nginx:1.15.8
-RUN apt update
-RUN apt install -y --no-install-recommends g++ openssl ca-certificates
 ADD . /etc/nginx
-WORKDIR /etc/nginx
-RUN cp ca-certificates/object-cut.crt /etc/ssl/object-cut.crt
-RUN cp ca-certificates/object-cut.key /etc/ssl/object-cut.key
-RUN update-ca-certificates
