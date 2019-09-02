@@ -31,7 +31,7 @@ def test():
         request_body['image_url'] = args.image_url
     else:
         request_body['image_base64'] = image_utils.encode(args.image_path)
-    endpoint_url = f'http://{PRODUCTION_SERVER_IP}/cut'
+    endpoint_url = f'https://{PRODUCTION_SERVER_IP}/cut'
     response = requests.post(endpoint_url, json=request_body, timeout=60)
     if response.ok:
         response_json = response.json()
