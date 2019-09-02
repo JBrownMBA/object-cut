@@ -29,12 +29,14 @@ body, html {
     flex-wrap: wrap;
 }
 
-#form-card {
-    width: 80%;
+#form-card { 
+    padding: 1vh;
+    width: 45vh;
 }
 
 #card-result {
-    width: 80%;
+    padding: 1vh;
+    width: 45vh;
 }
 
 .title {
@@ -49,11 +51,13 @@ body, html {
 @media screen and (min-width: 576px) { 
 
     #form-card {
-        width: 60%;
+        padding: 4vh;
+        width: 70vh;
     }
 
     #card-result {
-        width: 40%;
+        padding: 4vh;
+        width: 50vh;
     }
 
 }
