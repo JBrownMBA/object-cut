@@ -7,7 +7,7 @@
 
 # ObjectCut
 
-[Demo](https://objectcut.ga/) | [API](http://134.209.244.212:8083/ui/) | [Devpost](https://devpost.com/software/objectcut)
+[Demo](https://objectcut.ga/) | [API](https://objectapi.ga/ui) | [Devpost](https://devpost.com/software/objectcut)
 
 ✂️ Cut an object of an image typing its name built in [PyTorch Summer Hackathon](https://pytorch.devpost.com/).
 
