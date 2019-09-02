@@ -37,175 +37,177 @@
 
 	<body class="bg">
 
-    <div id="form-card" class="ui centered card">
-      <div class="content">
-        <!-- Header -->
-        <h1 class="header title">ObjectCut</h1>
-        <!-- Success message -->
-        <div id="success-message" class="ui positive message">
-          <i class="close icon"></i>
-          <div class="header">Yay!</div>
-          <p class="success-messsage-text"></p>
-        </div>
-        <!-- Error message -->
-        <div id="error-message" class="ui negative message">
-          <i class="close icon"></i>
-          <div class="header">Error!</div>
-          <p class="error-messsage-text"></p>
-        </div>
-        <!-- Form -->
-        <div class="ui form">
-          <!-- Checkbox -->
-          <div class="field">
-              <label for="image">Image origin</label>
-          </div>
-          <div class="inline fields">
-            
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input id="from-url" type="radio" name="image" checked="" tabindex="0" class="hidden">
-                <label>From URL</label>
+    <div class="page-content">
+      <div class="card-content">
+        <div id="form-card" class="ui centered card">
+          <div class="content">
+            <!-- Header -->
+            <h1 class="header title">ObjectCut</h1>
+            <!-- Success message -->
+            <div id="success-message" class="ui positive message">
+              <i class="close icon"></i>
+              <div class="header">Yay!</div>
+              <p class="success-messsage-text"></p>
+            </div>
+            <!-- Error message -->
+            <div id="error-message" class="ui negative message">
+              <i class="close icon"></i>
+              <div class="header">Error!</div>
+              <p class="error-messsage-text"></p>
+            </div>
+            <!-- Form -->
+            <div class="ui form">
+              <!-- Checkbox -->
+              <div class="field">
+                  <label for="image">Image origin</label>
               </div>
-            </div>
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input id="from-file" type="radio" name="image" tabindex="0" class="hidden">
-                <label>From File</label>
+              <div class="inline fields">
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input id="from-url" type="radio" name="image" checked="" tabindex="0" class="hidden">
+                    <label>From URL</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input id="from-file" type="radio" name="image" tabindex="0" class="hidden">
+                    <label>From File</label>
+                  </div>
+                </div>
               </div>
+              <!-- Input Image URL -->
+              <div id="input-url" class="field">
+                <input placeholder="Image URL" type="text" name="imageUrl">
+              </div>
+              <!-- Input Image Base64 -->
+              <div id="input-file" class="field">
+                <label for="file" class="ui icon button"><i class="file icon"></i>Open File (max. 10MB)</label>
+                <input type="file" id="file" style="display:none" accept=".jpg,.jpeg">
+                <input name="imageBase64" hidden>
+              </div>
+              <!-- Input Objects -->
+              <div class="required field">
+                <label>Objects</label>
+                <select class="ui fluid search dropdown" multiple="" name="objects">
+                  <option value="">Object</option>
+                  <option value="airplane">airplane</option>
+                  <option value="apple">apple</option>
+                  <option value="backpack">backpack</option>
+                  <option value="banana">banana</option>
+                  <option value="baseball bat">baseball bat</option>
+                  <option value="baseball glove">baseball glove</option>
+                  <option value="bear">bear</option>
+                  <option value="bed">bed</option>
+                  <option value="bench">bench</option>
+                  <option value="bicycle">bicycle</option>
+                  <option value="bird">bird</option>
+                  <option value="boat">boat</option>
+                  <option value="book">book</option>
+                  <option value="bottle">bottle</option>
+                  <option value="bowl">bowl</option>
+                  <option value="broccoli">broccoli</option>
+                  <option value="bus">bus</option>
+                  <option value="cake">cake</option>
+                  <option value="car">car</option>
+                  <option value="carrot">carrot</option>
+                  <option value="cat">cat</option>
+                  <option value="cell phone">cell phone</option>
+                  <option value="chair">chair</option>
+                  <option value="clock">clock</option>
+                  <option value="couch">couch</option>
+                  <option value="cow">cow</option>
+                  <option value="cup">cup</option>
+                  <option value="dining table">dining table</option>
+                  <option value="dog">dog</option>
+                  <option value="donut">donut</option>
+                  <option value="elephant">elephant</option>
+                  <option value="fire hydrant">fire hydrant</option>
+                  <option value="fork">fork</option>
+                  <option value="frisbee">frisbee</option>
+                  <option value="giraffe">giraffe</option>
+                  <option value="hair drier">hair drier</option>
+                  <option value="handbag">handbag</option>
+                  <option value="horse">horse</option>
+                  <option value="hot dog">hot dog</option>
+                  <option value="keyboard">keyboard</option>
+                  <option value="kite">kite</option>
+                  <option value="knife">knife</option>
+                  <option value="laptop">laptop</option>
+                  <option value="microwave">microwave</option>
+                  <option value="motorcycle">motorcycle</option>
+                  <option value="mouse">mouse</option>
+                  <option value="orange">orange</option>
+                  <option value="oven">oven</option>
+                  <option value="parking meter">parking meter</option>
+                  <option value="person">person</option>
+                  <option value="pizza">pizza</option>
+                  <option value="potted plant">potted plant</option>
+                  <option value="refrigerator">refrigerator</option>
+                  <option value="remote">remote</option>
+                  <option value="sandwich">sandwich</option>
+                  <option value="scissors">scissors</option>
+                  <option value="sheep">sheep</option>
+                  <option value="sink">sink</option>
+                  <option value="skateboard">skateboard</option>
+                  <option value="skis">skis</option>
+                  <option value="snowboard">snowboard</option>
+                  <option value="spoon">spoon</option>
+                  <option value="sports ball">sports ball</option>
+                  <option value="stop sign">stop sign</option>
+                  <option value="suitcase">suitcase</option>
+                  <option value="surfboard">surfboard</option>
+                  <option value="teddy bear">teddy bear</option>
+                  <option value="tennis racket">tennis racket</option>
+                  <option value="tie">tie</option>
+                  <option value="toaster">toaster</option>
+                  <option value="toilet">toilet</option>
+                  <option value="toothbrush">toothbrush</option>
+                  <option value="traffic light">traffic light</option>
+                  <option value="train">train</option>
+                  <option value="truck">truck</option>
+                  <option value="tv">tv</option>
+                  <option value="umbrella">umbrella</option>
+                  <option value="vase">vase</option>
+                  <option value="wine glass">wine glass</option>
+                  <option value="zebra">zebra</option>
+                  </select>
+              </div>
+              <!-- Parameters -->
+              <div class="field">
+                  <label>Parameters</label>
+              </div>
+              <!-- Input bounding box -->
+              <div class="field">
+                <div class="ui slider checkbox">
+                  <input type="checkbox" name="boundingBox">
+                  <label>Bounding box</label>
+                </div>
+              </div>
+              <!-- Input text -->
+              <div class="field">
+                <div class="ui slider checkbox">
+                  <input type="checkbox" name="text">
+                  <label>Object label</label>
+                </div>
+              </div>
+              <!-- Input white background -->
+              <div class="field">
+                <div class="ui slider checkbox">
+                  <input type="checkbox" name="whiteBg">
+                  <label>White background</label>
+                </div>
+              </div>
+              <button class="ui button" type="submit">Submit</button>
             </div>
           </div>
-          <!-- Input Image URL -->
-          <div id="input-url" class="field">
-            <input placeholder="Image URL" type="text" name="imageUrl">
-          </div>
-          <!-- Input Image Base64 -->
-          <div id="input-file" class="field">
-            <label for="file" class="ui icon button"><i class="file icon"></i>Open File (max. 10MB)</label>
-            <input type="file" id="file" style="display:none" accept=".jpg,.jpeg">
-            <input name="imageBase64" hidden>
-          </div>
-          <!-- Input Objects -->
-          <div class="required field">
-            <label>Objects</label>
-            <select class="ui fluid search dropdown" multiple="" name="objects">
-              <option value="">Object</option>
-              <option value="airplane">airplane</option>
-              <option value="apple">apple</option>
-              <option value="backpack">backpack</option>
-              <option value="banana">banana</option>
-              <option value="baseball bat">baseball bat</option>
-              <option value="baseball glove">baseball glove</option>
-              <option value="bear">bear</option>
-              <option value="bed">bed</option>
-              <option value="bench">bench</option>
-              <option value="bicycle">bicycle</option>
-              <option value="bird">bird</option>
-              <option value="boat">boat</option>
-              <option value="book">book</option>
-              <option value="bottle">bottle</option>
-              <option value="bowl">bowl</option>
-              <option value="broccoli">broccoli</option>
-              <option value="bus">bus</option>
-              <option value="cake">cake</option>
-              <option value="car">car</option>
-              <option value="carrot">carrot</option>
-              <option value="cat">cat</option>
-              <option value="cell phone">cell phone</option>
-              <option value="chair">chair</option>
-              <option value="clock">clock</option>
-              <option value="couch">couch</option>
-              <option value="cow">cow</option>
-              <option value="cup">cup</option>
-              <option value="dining table">dining table</option>
-              <option value="dog">dog</option>
-              <option value="donut">donut</option>
-              <option value="elephant">elephant</option>
-              <option value="fire hydrant">fire hydrant</option>
-              <option value="fork">fork</option>
-              <option value="frisbee">frisbee</option>
-              <option value="giraffe">giraffe</option>
-              <option value="hair drier">hair drier</option>
-              <option value="handbag">handbag</option>
-              <option value="horse">horse</option>
-              <option value="hot dog">hot dog</option>
-              <option value="keyboard">keyboard</option>
-              <option value="kite">kite</option>
-              <option value="knife">knife</option>
-              <option value="laptop">laptop</option>
-              <option value="microwave">microwave</option>
-              <option value="motorcycle">motorcycle</option>
-              <option value="mouse">mouse</option>
-              <option value="orange">orange</option>
-              <option value="oven">oven</option>
-              <option value="parking meter">parking meter</option>
-              <option value="person">person</option>
-              <option value="pizza">pizza</option>
-              <option value="potted plant">potted plant</option>
-              <option value="refrigerator">refrigerator</option>
-              <option value="remote">remote</option>
-              <option value="sandwich">sandwich</option>
-              <option value="scissors">scissors</option>
-              <option value="sheep">sheep</option>
-              <option value="sink">sink</option>
-              <option value="skateboard">skateboard</option>
-              <option value="skis">skis</option>
-              <option value="snowboard">snowboard</option>
-              <option value="spoon">spoon</option>
-              <option value="sports ball">sports ball</option>
-              <option value="stop sign">stop sign</option>
-              <option value="suitcase">suitcase</option>
-              <option value="surfboard">surfboard</option>
-              <option value="teddy bear">teddy bear</option>
-              <option value="tennis racket">tennis racket</option>
-              <option value="tie">tie</option>
-              <option value="toaster">toaster</option>
-              <option value="toilet">toilet</option>
-              <option value="toothbrush">toothbrush</option>
-              <option value="traffic light">traffic light</option>
-              <option value="train">train</option>
-              <option value="truck">truck</option>
-              <option value="tv">tv</option>
-              <option value="umbrella">umbrella</option>
-              <option value="vase">vase</option>
-              <option value="wine glass">wine glass</option>
-              <option value="zebra">zebra</option>
-              </select>
-          </div>
-          <!-- Parameters -->
-          <div class="field">
-              <label>Parameters</label>
-          </div>
-          <!-- Input bounding box -->
-          <div class="field">
-            <div class="ui slider checkbox">
-              <input type="checkbox" name="boundingBox">
-              <label>Bounding box</label>
+        </div>
+        <!-- Card result -->
+        <div id="card-result" class="ui centered card">
+            <div class="image">
+              <img src=''>
             </div>
-          </div>
-          <!-- Input text -->
-          <div class="field">
-            <div class="ui slider checkbox">
-              <input type="checkbox" name="text">
-              <label>Object label</label>
-            </div>
-          </div>
-          <!-- Input white background -->
-          <div class="field">
-            <div class="ui slider checkbox">
-              <input type="checkbox" name="whiteBg">
-              <label>White background</label>
-            </div>
-          </div>
-          <button class="ui button" type="submit">Submit</button>
         </div>
       </div>
-    </div>
-    
-    <!-- Card result -->
-    <div id="card-result" class="ui centered card">
-        <div class="image">
-          <img src=''>
-        </div>
     </div>
 
 		<!-- Scripts -->
