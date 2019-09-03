@@ -135,3 +135,16 @@ $('.form button').on('click', function() {
         }
     }
 });
+
+// Refresh button
+$('.try-another-one').on('click', function() {
+    location.reload();
+});
+
+// Download
+$('.download').on('click', function() {
+    var downloadLink = document.createElement('a');
+    downloadLink.href = $('.image img').attr('src');
+    downloadLink.download = 'object_cut-your_result.png';
+    downloadLink.click();
+});
