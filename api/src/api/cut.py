@@ -1,4 +1,5 @@
 import os
+import gc
 
 from flask import request, jsonify
 
@@ -64,3 +65,6 @@ def post():
 
     except Exception as e:
         return jsonify(make_response(True, message=f'Unexpected error: {e}')), 400
+
+    finally:
+        gc.collect()
