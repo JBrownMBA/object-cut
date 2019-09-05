@@ -40,14 +40,6 @@ paths:
                 image_base64:
                   type: string
                   description: URL and filename - safe base64(url) encoded image.
-                return_bounding_box:
-                  type: boolean
-                  description: (optional) Return the bounding box of the detected object from the given list.
-                  default: false
-                return_text:
-                  type: boolean
-                  description: (optional) Return the text of the detected object from the given list.
-                  default: false
                 return_white_bg:
                   type: boolean
                   description: (optional) Return image with a white background instead of transparent.

@@ -113,8 +113,6 @@ $('.form button').on('click', function() {
     $('#error-message').hide();
     var formData = {
         objects: getFieldValueSelect('objects'),
-        return_bounding_box: getFieldValueCheckbox('boundingBox'),
-        return_text: getFieldValueCheckbox('text'),
         return_white_bg: getFieldValueCheckbox('whiteBg')
     };
     if ($('#from-url').is(':checked')) {

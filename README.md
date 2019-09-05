@@ -126,8 +126,6 @@ Cuts or crops the specified objects from a given image and return encoded in Bas
 | image_url           | string   | Internet accessible URL of an image.                         |
 | Image_base64        | string   | URL and filename - safe base64(url) encoded image.           |
 | objects             | string[] | List of objects to cut.                                      |
-| return_bounding_box | boolean  | (optional) Return the bounding box of the detected object from the given list. |
-| return_text         | boolean  | (optional) Return the text of the detected object from the given list. |
 | return_white_bg     | boolean  | (optional) Return image with a white background instead of transparent. |
 
 ##### Request example

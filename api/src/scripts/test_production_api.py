@@ -10,8 +10,6 @@ def _parse_args():
     parser.add_argument('--image_url', type=str)
     parser.add_argument('--image_path', type=str)
     parser.add_argument('--list', help='Add a list of desired classes', nargs='+', type=str, required=True)
-    parser.add_argument('--return_bounding_box', action='store_true')
-    parser.add_argument('--return_text', action='store_true')
     parser.add_argument('--return_white_bg', action='store_true')
     return parser.parse_args()
 
@@ -23,8 +21,6 @@ def test():
 
     request_body = dict(
         objects=args.list,
-        return_bounding_box=args.return_bounding_box,
-        return_text=args.return_text,
         return_white_bg=args.return_white_bg
     )
     if args.image_url:
