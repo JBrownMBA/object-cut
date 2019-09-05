@@ -28,7 +28,6 @@
    2. [Recommendations](#recommendations)
    3. [Usage](#usage)
    4. [Endpoints](#endpoints)
-   5. [Structure](#structure)
 5. [Authors](#authors)
 6. [License](#license)
 
@@ -161,10 +160,6 @@ curl -d '{"image_url": URL, "objects": ["cat", "person"]}' -H "Content-Type: app
     }
 }
 ```
-
-### Structure
-
-TODO
 
 ## Authors
 
