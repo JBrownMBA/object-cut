@@ -49,19 +49,19 @@ The inspiration came really from a moment where we needed to cut a person from a
 
 ### What it does
 
-It takes a picture and a set of labels that are uploaded by the user, then we send that information to our API which then it runs a **Mask-RCNN** pytorch model to extract the masks of each class. Then using that information we are able to extract those pixels and return it without background. 
+It takes a picture and a set of labels that are uploaded by the user, then we send that information to our API which then it runs a **Mask-RCNN** pytorch model to extract the masks of each class. Then using that information we are able to create a mask that includes all the desired classes to extract those pixels and return it without background. 
 
 ### How we built it
 
-TODO
+**FICAR FRONTED I API**
 
-This tool works using a **Mask-RCNN** model trained with the **COCO dataset**, an extension of Faster-RCNN which adds the masks of each class that has been detected. 
+To deal with image stuff like resizes or deleting the background we use **Pillow** python's library, then as a main core of the application we use **torchvision** and its **Mask-RCNN** model trained with the **COCO dataset**, an extension of Faster-RCNN which adds the masks of each class that has been detected. 
 
 <p align="center">
   <img alt="Mask-RCNN" src="https://cdn-images-1.medium.com/max/800/1*6MHxZVujW2W5khpQKCCDUw.png" width="80%"
 </p>
 
-The model has two main stages. Firstly, using a **Region Proposal Network** (RPN) it generates several region proposals where there might be an object. Then, secondly, it predicts the class of the object, refines the bounding box and generates the mask in pixel level based on the first stage proposal. 
+The model has two main stages. Firstly, using a **Region Proposal Network** (RPN) it generates several region proposals where there might be an object. Then, secondly, it predicts the class of the object, refines the bounding box and generates the mask in pixel level based on the first stage proposal. Using this outputted mask then we can create the image desired by the user. 
 
 ### Challenges we ran into
 
@@ -69,15 +69,15 @@ First of all, one member of the team had never worked with Pytorch, and the othe
 
 ### Accomplishments that we're proud of
 
-We are really proud with the final project we have developed. It is really useful and probably I will use it in the future.
+We are really proud with the final project we have developed. It is really useful and probably we will use it in the future.
 
 ### What we learned
 
-We have learnt how beautiful can be to insert Deep Learning to your solutions using Pytorch and all its facilities: torchvision, datasets, etc. Until we came up with an idea of the project we really dived into it and we were amazed by all the possibilities it opened. 
+We have learnt how beautiful can be to insert Deep Learning to your solutions using Pytorch and all its facilities: torchvision, datasets, etc. Until we came up with an idea of the project we really dived into it and we were amazed by all the possibilities it opened. Also we learnt about **POSAR LO DE HTTP HTTPS I USWUGI**
 
 ### What's next for ObjectCut
 
-ObjectCut can only extract 91 classes **COMPROVAR** since it is the COCO pretrained model but it would be a nice improvement to train it with more classes. Also another feature that could be interesting to implement would be to add the option to load your saved Mask-RCNN model in the website UI. 
+ObjectCut can only extract 91 classes since it is the COCO pretrained model but it would be a nice improvement to train it with more classes. Also another feature that could be interesting to implement would be to add the option to load your saved Mask-RCNN model in the website UI.
 
 ## API
 
