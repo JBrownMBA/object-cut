@@ -11,6 +11,10 @@ from src.torch.run import instance_segmentation_api
 
 
 def post():
+    """
+    Main function for /cut endpoint.
+    :return: JSON response.
+    """
     try:
         body = request.json
 

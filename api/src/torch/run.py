@@ -21,6 +21,12 @@ def _parse_args():
 
 
 def _get_prediction(img_path, threshold):
+    """
+    Gets the prediction of an image given a threshold.
+    :param img_path: Image path.
+    :param threshold: Threshold.
+    :return: Predicted masks, boxes and classes.
+    """
     with Timer('Transform image'):
         with Image.open(img_path).convert('RGB') as img:
             img = image_utils.resize_aspect(img)
@@ -45,6 +51,11 @@ def _get_prediction(img_path, threshold):
 
 
 def _random_colour_masks(image):
+    """
+    Generates a random color mask.
+    :param image: Image to generate the mask.
+    :return: Coloured mask.
+    """
     r = np.zeros_like(image).astype(np.uint8)
     g = np.zeros_like(image).astype(np.uint8)
     b = np.zeros_like(image).astype(np.uint8)
@@ -54,6 +65,12 @@ def _random_colour_masks(image):
 
 
 def instance_segmentation_api(image_path, object_list):
+    """
+    Cut every object of a list from an image.
+    :param image_path: Image path.
+    :param object_list: List of objects to cut.
+    :return: Output path of the generated image.
+    """
     masks, boxes, prediction_cls = _get_prediction(image_path, MODEL_THRESHOLD)
 
     with Timer('Apply mask'):
