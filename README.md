@@ -90,11 +90,11 @@ ObjectCut can only extract 91 classes since it is the COCO pretrained model but 
 
 This is how our project looks like unifying frontend and backend. If you want to see more, just check [our live demo](https://objectcut.ga/).
 
-![Screenshot 1](docs/images/screenshot_1.png)
-![Screenshot 2](docs/images/screenshot_2.png)
-![Screenshot 3](docs/images/screenshot_3.png)
-![Screenshot 4](docs/images/screenshot_4.png)
-![Screenshot 5](docs/images/screenshot_5.png)
+![Screenshot 1](docs/images/screenshot_1.jpg)
+![Screenshot 2](docs/images/screenshot_2.jpg)
+![Screenshot 3](docs/images/screenshot_3.jpg)
+![Screenshot 4](docs/images/screenshot_4.jpg)
+![Screenshot 5](docs/images/screenshot_5.jpg)
 
 ## API
 
