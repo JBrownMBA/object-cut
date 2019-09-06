@@ -11,7 +11,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/AlbertSuarez/object-cut.svg)](https://GitHub.com/AlbertSuarez/object-cut/network/)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/AlbertSuarez/object-cut.svg)](https://github.com/AlbertSuarez/object-cut)
 
-[Demo](https://objectcut.ga/) | [API Documentation](https://objectapi.ga/ui) | [Devpost](https://devpost.com/software/objectcut) | Video demo
+[Demo](https://objectcut.ga/) | [API Documentation](https://objectapi.ga/ui) | [Devpost](https://devpost.com/software/objectcut) | [Video demo](https://youtu.be/9U6u9FspnTA)
 
 ✂️ Cut an object of an image typing its name in an automagic way built in [PyTorch Summer Hackathon](https://pytorch.devpost.com/).
 
