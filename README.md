@@ -13,6 +13,8 @@
 
 [Demo](https://objectcut.ga/) | [API Documentation](https://objectapi.ga/ui) | [Devpost](https://devpost.com/software/objectcut) | [Video demo](https://youtu.be/9U6u9FspnTA)
 
+> **Note**: This is an old version of this project. For seeing more enhancements, check it out [here](https://objectcut.com).
+
 ✂️ Cut an object of an image typing its name in an automagic way built in [PyTorch Summer Hackathon](https://pytorch.devpost.com/).
 
 ## Contents
